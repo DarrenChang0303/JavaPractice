@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-04-15 23:26:11
+ * @LastEditTime: 2021-04-19 00:46:38
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \HeroAttack\src\Battle.java
+ */
 public class Battle {
     private Hero[] heroes = new Hero[2];
 
@@ -17,7 +25,7 @@ public class Battle {
     }
 
     private boolean isBattleOver(){
-        return !(heroes[0].isAlive()||heroes[1].isAlive());
+        return !(heroes[0].isAlive()&&heroes[1].isAlive());
     }
 
     private void processHeroTurn(int heroIndex){

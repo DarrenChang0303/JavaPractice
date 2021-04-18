@@ -1,4 +1,3 @@
-
 public class Hero {
     private String name; // 名字
     private int hp = 500; // 生命
@@ -8,30 +7,36 @@ public class Hero {
     private int defense = 50; // 防禦力
     private Skill skill; // 技能
 
-    public enum Skill {
-        COLLIDING, WATERBALL
-    }
+    // public enum Skill {
+    //     COLLIDING, WATERBALL
+    // }
 
     public Hero(String name, Skill skill) {
         this.name = name;
         this.skill = skill;
     }
 
-    public void attack(Hero targetHero) {
-        switch (skill) {
-        case COLLIDING:
-            System.out.println("%s使用 衝撞攻擊");
-            targetHero.lostHp(getStrength() - targetHero.getDefense());
-            break;
-        case WATERBALL:
-            System.out.println("%s使用 水球攻擊");
-            lostMp(5);
-            // TODO:處理Mp不足狀況
-            targetHero.lostHp(getWisdom() * 2);
-            break;
-
-        }
+    public void attack(Hero targetHero){
+        int damage = skill.attack(this, targetHero);
+        System.out.printf("%s使用%s，造成%d的傷害。\n",getName(),skill,damage);
+        System.out.printf("%s的HP為%d。\n",targetHero.getName(),targetHero.getHp());
     }
+
+    // public void attack(Hero targetHero) {
+    // switch (skill) {
+    // case COLLIDING:
+    // System.out.printf("%s使用 衝撞攻擊 \n",getName());
+    // targetHero.lostHp(getStrength() - targetHero.getDefense());
+    // break;
+    // case WATERBALL:
+    // System.out.printf("%s使用 水球攻擊 \n",getName());
+    // lostMp(5);
+    // // TODO:處理Mp不足狀況
+    // targetHero.lostHp(getWisdom() * 2);
+    // break;
+
+    // }
+    // }
 
     public void lostHp(int hp) {
         setHp(getHp() - hp);
